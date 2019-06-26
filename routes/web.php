@@ -10,11 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', '/login');
+Route::redirect('/', '/user');
 Auth::routes();
 //Группа user
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth',], function () {
     Route::get('/', 'User\ReportController@index')->name('index');
     Route::post('/', 'User\ReportController@calculate')->name('calculate');
+});
+
+//Группа данных для модели Setting
+$groupDataSettings = [
+    'namespace' => 'Settings',
+    'middleware' => 'auth',
+];
+
+Route::group($groupDataSettings, function () {
+    Route::resource(
+        'settings',
+        'SettingsController',
+        ['only' => ['edit', 'update', 'destroy']],
+    )->parameters(['settings' => 'user']);
 });
 
