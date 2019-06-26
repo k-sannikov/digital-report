@@ -14,11 +14,6 @@ class ReportController extends Controller
         return view('index');
     }
 
-    public function about()
-    {
-        return view('about');
-    }
-
     public function calculate(ReportRequest $request)
     {
         $percents['mark2'] = DigitalReport::percentageMark($request->mark2, $request->students);
@@ -29,7 +24,20 @@ class ReportController extends Controller
         $indicators['kpu'] = DigitalReport::kpu($request->only(['mark5', 'mark4', 'mark3']), $request->students);
         $indicators['pu'] = DigitalReport::pu($request->only(['mark5', 'mark4']), $request->students);
         $indicators['ca'] = DigitalReport::ca($request->only(['mark5', 'mark4', 'mark3', 'mark2']),$request->students);
+        $result = array_merge($indicators, $request->all());
 
-        return view('index', array_merge($indicators, $request->all()));
+        //статус collapse окна (открыто/закрыто)
+        foreach ($request->only('name', 'academic_year', 'discipline','group') as $key => $value) {
+            if ($value !== null) {
+                $result['collapse'] = 'show';
+            }
+        }
+
+        //выбор действия (подсчет/печать)
+        if ($request->submit == 'calculate') {
+            return view('index', $result);
+        } elseif ($request->submit == 'print') {
+            return view('print', $result);
+        }
     }
 }
