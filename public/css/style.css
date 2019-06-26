@@ -1,0 +1,20 @@
+body {
+    background-color: #e2e5e7;
+    overflow-y: scroll;
+}
+
+/*Поля формы*/
+.form-control,
+.custom-select {
+    background-color: #f8f9fa;
+}
+
+.btn-link {
+    color: #495057;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #292b2c;
+  text-decoration: none;
+}
