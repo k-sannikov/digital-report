@@ -33,6 +33,11 @@ class ReportRequest extends FormRequest
             'mark4' => ['nullable', 'integer'],
             'mark3' => ['nullable', 'integer'],
             'mark2' => ['nullable', 'integer'],
+            'name' => ['nullable', 'string'],
+            'academic_year' => ['nullable', 'string'],
+            'semester' => ['nullable', 'string'],
+            'discipline' => ['nullable', 'string'],
+            'group' => ['nullable', 'string'],
         ];
     }
 }
