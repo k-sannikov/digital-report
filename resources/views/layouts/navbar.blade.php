@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+@include('partials.about')
+@include('partials.help')
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d-print-none">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -19,6 +21,15 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#about">
+                   <b>О программе</b>
+                </button>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#help">
+                   <b>Помощь</b>
+                </button>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

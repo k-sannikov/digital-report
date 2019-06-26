@@ -5,7 +5,7 @@
         @csrf
         @include('partials.form')
         <div class="row justify-content-center">
-            <button type="submit" class="btn btn-secondary col-3"><b>Подсчитать</b></button>
+            <button type="submit" class="btn btn-secondary col-3" name="submit" value="calculate"><b>Подсчитать</b></button>
         </div>
     </form>
 @endsection

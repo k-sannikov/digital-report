@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         @include('layouts.navbar')
-        <main class="container my-3 p-3 border rounded shadow-sm">
+        <main class="container my-3 p-3 border rounded shadow-sm bg-white">
             @yield('content')
         </main>
     </div>
