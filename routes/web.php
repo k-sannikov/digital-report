@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/login');
+Auth::routes();
+//Группа user
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth',], function () {
+    Route::get('/', 'User\ReportController@index')->name('index');
+    Route::post('/', 'User\ReportController@calculate')->name('calculate');
 });
+
