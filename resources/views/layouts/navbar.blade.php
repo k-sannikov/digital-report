@@ -2,7 +2,7 @@
 @include('partials.help')
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm d-print-none">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/user') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -11,33 +11,29 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                @can('admin')
-                    {{--  --}}
-                @elsecan('')
-                    {{--  --}}
-                @endcan
-            </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                @guest
+                @else
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#about">
-                   <b>О программе</b>
+                   О программе
                 </button>
 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-link" data-toggle="modal" data-target="#help">
-                   <b>Помощь</b>
+                   Помощь
                 </button>
+                @endguest
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
@@ -47,10 +43,10 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-{{--                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="dropdown-item">{{ __('Logout') }}</button>
-                            </form> --}}
+                            </form>
                         </div>
                     </li>
                 @endguest

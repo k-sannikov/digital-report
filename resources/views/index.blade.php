@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('calculate') }}" method="post">
+    <form action="{{ route('user.calculate') }}" method="post">
         @csrf
         @include('partials.form')
         <div class="row justify-content-center">
