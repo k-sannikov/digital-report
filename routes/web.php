@@ -12,6 +12,8 @@
 */
 Route::redirect('/', '/user');
 Auth::routes();
+
+Route::view('/', 'index');
 //Группа user
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth',], function () {
     Route::get('/', 'User\ReportController@index')->name('index');
