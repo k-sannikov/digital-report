@@ -28,7 +28,7 @@ Route::group($groupDataSettings, function () {
     Route::resource(
         'settings',
         'SettingsController',
-        ['only' => ['edit', 'update', 'destroy']],
+        ['only' => ['edit', 'update', 'destroy']]
     )->parameters(['settings' => 'user']);
 });
 
