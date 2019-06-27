@@ -11,7 +11,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('user.index');
     }
 
     public function calculate(ReportRequest $request)
@@ -35,9 +35,9 @@ class ReportController extends Controller
 
         //выбор действия (подсчет/печать)
         if ($request->submit == 'calculate') {
-            return view('index', $result);
+            return view('user.index', $result);
         } elseif ($request->submit == 'print') {
-            return view('print', $result);
+            return view('user.print', $result);
         }
     }
 }
